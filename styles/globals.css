@@ -17,19 +17,11 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   background-color: #ffffff;
-}
-
-html {
   overflow-x: hidden;
-  
 }
 
-body {
-  overflow-x: hidden;
-  overflow-y: visible !important; /* important for sticky */
-}
-
-/* h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
+  /* color: #2c2c2c; */
   color: #2C5948;
 }
 
@@ -38,24 +30,9 @@ h1 {
   font: sans-serif;
 }
 
-p,li {
+p, a, li {
   color: #555;
-} */
-.pharma-button {
-  border: 1px solid #204A3C;
-  background-color: #2C5948;
-  color: #F9FFFD;
-  padding: 0.25rem 1rem; /* same as px-4 py-1 */
-  border-radius: 9999px; /* fully rounded */
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.pharma-button:hover {
-  background-color: #f9fafb; /* same as hover:bg-gray-50 */
-  color: #204A3C;
+  /* color: #2C5948; */
 }
 
 span {
