@@ -1,57 +1,168 @@
-import Layout from '../components/Layout';
+import Layout from "../components/Layout";
+import Link from "next/link";
 
 const Contact = () => {
+  // Contact details as per the design
+  const contactInfo = [
+    {
+      label: "Phone:",
+      value: "(+1) 456-7890",
+    },
+    {
+      label: "Email:",
+      value: "contact@rosspharma.com",
+    },
+    {
+      label: "Address:",
+      value: "123 Biotech Ave, Innovation City, 12345",
+      multiline: true,
+    },
+  ];
+
   return (
-    <Layout title="Contact Us | RossPharma.org">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">Get In Touch</h1>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-12">
-          Ready to discuss your next project? Fill out the form below or contact us directly. We look forward to hearing from you.
-        </p>
+    <Layout>
+      {/* ⭐ Top Header Section: Let's Talk */}
+      {/* Background color set to light green shade matching the design */}
+      <section className="bg-white pt-20 pb-12 px-4 flex flex-col justify-center items-center">
+        <div className="container mx-auto text-center max-w-4xl pt-16 pb-12">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[#060C0C] mb-4">
+            Let's Talk
+          </h1>
+          <p className="text-gray-700 text-lg md:text-xl font-light max-w-xl mx-auto">
+            Please complete the form below or give us a call to discuss your
+            needs.
+          </p>
+        </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Send a Message</h2>
-            <form>
-              <div className="mb-4">
-                <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Name</label>
-                <input type="text" id="name" name="name" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email</label>
-                <input type="email" id="email" name="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-              </div>
-              <div className="mb-6">
-                <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">Message</label>
-                <textarea id="message" name="message" rows="5" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-              </div>
-              <button type="submit" className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                Send Message
-              </button>
-            </form>
-          </div>
+      {/* ⭐ Main Contact Form & Info Section */}
+      <section className="py-20 px-4 bg-[#EAFFF7]">
+        <div className="container mx-auto">
+          {/* Main Content Container (White background is for the card, surrounding background is light green/white) */}
+          <div className="bg-[#EAFFF7] p-0 rounded-2xl">
+            {/* Grid Layout for Info (Left) and Form (Right) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+              {/* ⬅️ Left Column: Contact Information */}
+              <div className="flex flex-col justify-start pt-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#060C0C] mb-6">
+                  Contact Us
+                </h2>
 
-          {/* Contact Details */}
-          <div className="bg-gray-50 p-8 rounded-lg">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Contact Information</h2>
-            <ul className="space-y-4 text-gray-700">
-              <li>
-                <span className="font-semibold">Phone:</span>
-                <p>+91 1234567890</p>
-              </li>
-              <li>
-                <span className="font-semibold">Email:</span>
-                <p>some@gmail.com</p>
-              </li>
-              <li>
-                <span className="font-semibold">Address:</span>
-                <p>123 Biotech Lane, Innovation City, India</p>
-              </li>
-            </ul>
+                <div className="space-y-6 text-gray-700">
+                  {contactInfo.map((info, index) => (
+                    <div key={index} className="pharma-contact-detail">
+                      <h4 className="font-semibold text-lg text-[#060C0C]">
+                        {info.label}
+                      </h4>
+                      <p className="text-base">
+                        {info.multiline ? (
+                          <>
+                            {info.value.split(", ").map((line, i) => (
+                              <span key={i} className="block">
+                                {line}
+                                {i < info.value.split(", ").length - 1
+                                  ? ","
+                                  : ""}
+                              </span>
+                            ))}
+                          </>
+                        ) : (
+                          info.value
+                        )}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* ➡️ Right Column: Contact Form */}
+              {/* Form container style matching the image */}
+              <div className="bg-[#EAFFF7] p-0 rounded-xl">
+                <form className="space-y-6">
+                  {/* Name */}
+                  <div>
+                    <label
+                      htmlFor="name"
+                      // ⭐ Label style updated to bold/dark text
+                      className="block text-sm font-semibold text-[#060C0C] mb-1"
+                    >
+                      Name*
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder="Enter your full name"
+                      className="w-full p-3 border bg-white border-gray-300 rounded-lg focus:ring-[#2C5948] focus:border-[#2C5948]"
+                      required
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <label
+                      htmlFor="email"
+                      // ⭐ Label style updated to bold/dark text
+                      className="block text-sm font-semibold text-[#060C0C] mb-1"
+                    >
+                      Email*
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="name@example.com"
+                      className="w-full p-3 border bg-white border-gray-300 rounded-lg focus:ring-[#2C5948] focus:border-[#2C5948]"
+                      required
+                    />
+                  </div>
+
+                  {/* Company Name */}
+                  <div>
+                    <label
+                      htmlFor="company"
+                      // ⭐ Label style updated to bold/dark text
+                      className="block text-sm font-semibold text-[#060C0C] mb-1"
+                    >
+                      Company Name
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      placeholder="Example Company"
+                      className="w-full p-3 border bg-white border-gray-300 rounded-lg focus:ring-[#2C5948] focus:border-[#2C5948]"
+                    />
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label
+                      htmlFor="message"
+                      // ⭐ Label style updated to bold/dark text
+                      className="block text-sm font-semibold text-[#060C0C] mb-1"
+                    >
+                      How can we help?*
+                    </label>
+                    <textarea
+                      id="message"
+                      rows="4"
+                      placeholder="Share some details about your concern..."
+                      className="w-full p-3 border bg-white border-gray-300 rounded-lg focus:ring-[#2C5948] focus:border-[#2C5948]"
+                      required
+                    ></textarea>
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    className="w-full bg-[#2C5948] text-white px-10 py-3 rounded-4xl font-semibold text-lg hover:bg-[#1f4234] transition-colors shadow-lg"
+                  >
+                    Contact Us
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };

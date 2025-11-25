@@ -1,25 +1,29 @@
 import Link from 'next/link';
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+    const pathname = usePathname();
     return (
         <footer>
             <div className="bg-[#1A2E2C] px-6 md:px-18 py-10 text-[#EAFFF7] mt-16 mx-auto">
 
                 {/* TOP SECTION */}
-                <div className="flex justify-center items-center text-center mb-12">
-                    <div className="max-w-[80%] mx-auto">
-                        <h2 className="text-3xl md:text-5xl font-semibold leading-tight mx-auto">
-                            Knowledgeable of International Regulations and Standards
-                        </h2>
+                {pathname !== "/services" && pathname !== "/contact" && (
+                    <div className="flex justify-center items-center text-center mb-12">
+                        <div className="max-w-[80%] mx-auto">
+                            <h2 className="text-3xl md:text-5xl font-semibold leading-tight mx-auto">
+                                Knowledgeable of International Regulations and Standards
+                            </h2>
 
-                        <Link
-                            href="/contact"
-                            className="inline-block bg-[#EAFFF7] px-5 py-2 rounded-3xl text-[#1A2E2C] mt-8 font-semibold"
-                        >
-                            Contact
-                        </Link>
+                            <Link
+                                href="/contact"
+                                className="inline-block bg-[#EAFFF7] px-5 py-2 rounded-3xl text-[#1A2E2C] mt-8 font-semibold"
+                            >
+                                Contact
+                            </Link>
+                        </div>
                     </div>
-                </div>
+                )}
 
                 {/* BOTTOM SECTION */}
                 <div className="flex flex-col md:flex-row w-full gap-10 my-4 md:gap-0">
@@ -55,16 +59,16 @@ const Footer = () => {
                         <div className="flex flex-col gap-1">
                             <h4 className="text-xl font-semibold">Follow Us</h4>
                             <Link href='#'>
-                            <span className="flex items-center gap-2 cursor-pointer text-[#EAFFF7]">
+                                <span className="flex items-center gap-2 cursor-pointer text-[#EAFFF7]">
 
-                                <svg
-                                    height="18px"
-                                    width="18px"
-                                    viewBox="0 0 382 382"
-                                >
-                                    <path
-                                        style={{ fill: "#EAFFF7" }}
-                                        d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889 
+                                    <svg
+                                        height="18px"
+                                        width="18px"
+                                        viewBox="0 0 382 382"
+                                    >
+                                        <path
+                                            style={{ fill: "#EAFFF7" }}
+                                            d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889 
                                             C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,
                                             10.056H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806 
                                             c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,
@@ -73,12 +77,12 @@ const Footer = () => {
                                             c-28.309,0-34.051,29.066-35.204,42.11v97.079c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246
                                             V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,
                                             59.312-27.912c73.552,0,73.131,68.716,73.131,106.472L341.91,330.654z"
-                                    />
-                                </svg>
+                                        />
+                                    </svg>
 
-                                {/* FIXED WHITE COLOR TEXT */}
-                                <p className="text-sm text-[#EAFFF7]">LinkedIn</p>
-                            </span>
+                                    {/* FIXED WHITE COLOR TEXT */}
+                                    <p className="text-sm text-[#EAFFF7]">LinkedIn</p>
+                                </span>
                             </Link>
                         </div>
                     </div>
