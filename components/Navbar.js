@@ -20,6 +20,7 @@ const Navbar = () => {
           <div className="flex items-center">
             {/* Replace this SVG with your actual logo image */}
             <img src="/logo.png" alt="Rosspharma Logo" className="h-9" />
+            <h3 className='uppercase text-[#2C5948] font-bold'>Rosspharma</h3>
           </div>
 
           {/* Navigation Links (Desktop) */}
