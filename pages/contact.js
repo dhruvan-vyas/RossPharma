@@ -22,7 +22,6 @@ const Contact = () => {
   return (
     <Layout>
       {/* ⭐ Top Header Section: Let's Talk */}
-      {/* Background color set to light green shade matching the design */}
       <section className="bg-white pt-20 pb-12 px-4 flex flex-col justify-center items-center">
         <div className="container mx-auto text-center max-w-4xl pt-16 pb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#060C0C] mb-4">
@@ -38,11 +37,8 @@ const Contact = () => {
       {/* ⭐ Main Contact Form & Info Section */}
       <section className="py-20 px-4 bg-[#EAFFF7]">
         <div className="container mx-auto">
-          {/* Main Content Container (White background is for the card, surrounding background is light green/white) */}
           <div className="bg-[#EAFFF7] p-0 rounded-2xl">
-            {/* Grid Layout for Info (Left) and Form (Right) */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              {/* ⬅️ Left Column: Contact Information */}
               <div className="flex flex-col justify-start pt-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-[#060C0C] mb-6">
                   Contact Us
@@ -75,15 +71,12 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* ➡️ Right Column: Contact Form */}
-              {/* Form container style matching the image */}
               <div className="bg-[#EAFFF7] p-0 rounded-xl">
                 <form className="space-y-6">
                   {/* Name */}
                   <div>
                     <label
                       htmlFor="name"
-                      // ⭐ Label style updated to bold/dark text
                       className="block text-sm font-semibold text-[#060C0C] mb-1"
                     >
                       Name*
@@ -101,7 +94,6 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="email"
-                      // ⭐ Label style updated to bold/dark text
                       className="block text-sm font-semibold text-[#060C0C] mb-1"
                     >
                       Email*
@@ -119,7 +111,6 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="company"
-                      // ⭐ Label style updated to bold/dark text
                       className="block text-sm font-semibold text-[#060C0C] mb-1"
                     >
                       Company Name
@@ -136,7 +127,6 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="message"
-                      // ⭐ Label style updated to bold/dark text
                       className="block text-sm font-semibold text-[#060C0C] mb-1"
                     >
                       How can we help?*

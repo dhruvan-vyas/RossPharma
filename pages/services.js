@@ -64,7 +64,6 @@ const Services = () => {
             {servicesData.map((service, index) => (
               <div
                 key={index}
-                // ⭐ group ક્લાસ કાર્ડ કન્ટેનર પર ઉમેરવામાં આવ્યો
                 className="group bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 flex flex-col"
               >
                 {/* Card Image */}
@@ -78,21 +77,17 @@ const Services = () => {
 
                 {/* ⭐ Title Row with Circular Icon Background */}
                 <div className="flex items-center gap-4 mb-4">
-                  {/* Icon Wrapper - Hover effect for background color */}
                   <div
-                    // ⭐ આઇકન બેકગ્રાઉન્ડ: ફરીથી #EAFFF7 (હળવો ગ્રીન) પર સેટ કર્યું છે અને hover પર #2C5948 થાય છે
                     className="flex-shrink-0 bg-[#EAFFF7] p-3 rounded-full flex items-center justify-center group-hover:bg-[#2C5948] transition-colors duration-300"
                   >
                     <img
                       src={service.icon}
                       alt=""
-                      // ⭐ આઇકન કલર: hover પર white જ રહેશે (invert filter દ્વારા)
                       className="w-6 h-6 md:w-7 md:h-7 group-hover:filter group-hover:invert transition-all duration-300"
                     />
                   </div>
 
                   <h3
-                    // ⭐ હેડિંગ કલર: hover પર ગ્રીન થાય છે
                     className="text-2xl font-bold text-[#060C0C] group-hover:text-[#2C5948] transition-colors duration-300"
                   >
                     {service.title}

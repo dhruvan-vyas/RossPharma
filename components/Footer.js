@@ -17,7 +17,7 @@ const Footer = () => {
 
                             <Link
                                 href="/contact"
-                                className="inline-block bg-[#EAFFF7] px-5 py-2 rounded-3xl text-[#1A2E2C] mt-8 font-semibold"
+                                className="inline-block bg-[#EAFFF7] hover:bg-transparent hover:border-[#EAFFF7] border-2 hover:text-[#EAFFF7] px-5 py-2 rounded-3xl text-[#1A2E2C] mt-8 font-semibold transition-all"
                             >
                                 Contact
                             </Link>
