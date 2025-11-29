@@ -21,7 +21,6 @@ const Contact = () => {
 
   return (
     <Layout>
-      {/* ⭐ Top Header Section: Let's Talk */}
       <section className="bg-white pt-20 pb-12 px-4 flex flex-col justify-center items-center">
         <div className="container mx-auto text-center max-w-4xl pt-16 pb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#060C0C] mb-4">
@@ -34,8 +33,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* ⭐ Main Contact Form & Info Section */}
-      <section className="py-20 px-4 bg-[#EAFFF7]">
+      <section className="py-20 px-50 bg-[#EAFFF7]">
         <div className="container mx-auto">
           <div className="bg-[#EAFFF7] p-0 rounded-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -73,7 +71,6 @@ const Contact = () => {
 
               <div className="bg-[#EAFFF7] p-0 rounded-xl">
                 <form className="space-y-6">
-                  {/* Name */}
                   <div>
                     <label
                       htmlFor="name"
@@ -90,7 +87,6 @@ const Contact = () => {
                     />
                   </div>
 
-                  {/* Email */}
                   <div>
                     <label
                       htmlFor="email"
@@ -107,7 +103,6 @@ const Contact = () => {
                     />
                   </div>
 
-                  {/* Company Name */}
                   <div>
                     <label
                       htmlFor="company"
@@ -123,7 +118,6 @@ const Contact = () => {
                     />
                   </div>
 
-                  {/* Message */}
                   <div>
                     <label
                       htmlFor="message"
@@ -140,10 +134,9 @@ const Contact = () => {
                     ></textarea>
                   </div>
 
-                  {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full bg-[#2C5948] text-white px-10 py-3 rounded-4xl font-semibold text-lg hover:bg-[#1f4234] transition-colors shadow-lg"
+                    className="w-full bg-[#2C5948] text-white px-10 py-3 rounded-full font-semibold text-lg hover:bg-[#1f4234] transition-colors shadow-lg"
                   >
                     Contact Us
                   </button>
