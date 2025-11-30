@@ -105,3 +105,24 @@ Social Responsibility
 	•	Compliance details
 	•	Partnership or company experience list
 
+
+
+
+
+
+
+
+
+
+
+1st.
+
+"Overall, we are very impressed by the expertise, value, and partnership provided by Cadoret Global."
+
+“Cadoret Global has been the perfect QA partner for our company, a small pharma focusing on early-stage development. Enith and her team are very experienced in all aspects of CMC and Clinical Supply Chain. Cadoret helped us to establish our quality system, audited our global network of vendors, and oversaw numerous successful manufacturing campaigns. As a small company, we especially appreciate that Cadoret is always very responsive and resolved issues rapidly without compromising product quality. Cadoret also contributed significantly to the due diligence process that led to our successful acquisition by a big pharma company, who is completely satisfied with Cadoret’s work. Overall, we are very impressed by the expertise, value, and partnership provided by Cadoret Global.”
+
+TECHNICAL OPERATIONS - BIOTECH COMPANY
+
+
+
+
