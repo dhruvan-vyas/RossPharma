@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import LogoScroller from '../components/LogoScroller';
+// import { Red_Hat_Display } from "next/font/google";
 import Link from 'next/link';
 
 const Home = () => {
@@ -31,11 +32,11 @@ const Home = () => {
     <Layout>
 
       {/* ⭐ HERO SECTION */}
-      <section className="py-16 min-h-[70vh] md:min-h-[90vh] mx-auto px-4 flex items-center">
+      {/* <section className="py-16 min-h-[70vh] md:min-h-[90vh] mx-auto px-4 flex items-center">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-10">
 
-            {/* TEXT */}
+
             <div className="w-full md:w-[70%] flex flex-col justify-center text-center md:text-left">
               <h1 className="text-4xl md:text-6xl font-extrabold text-[#060C0C] leading-tight">
                 Pioneering Pharmaceutical Pathways
@@ -49,7 +50,7 @@ const Home = () => {
               </span>
             </div>
 
-            {/* VIDEO */}
+
             <div className="w-full md:w-[30%]">
               <video
                 src="./videos/sample.mp4"
@@ -61,17 +62,58 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+<section className="relative w-full h-screen">
+      
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          // backgroundImage: '/public/Images/lab.jpg'// <-- replace with your image
+          backgroundImage: "url('/Images/lab.jpg')"
+        }}
+      ></div>
+
+      {/* Green Tint Overlay */}
+      <div className="absolute inset-0 bg-[#ffffff] opacity-94"></div>
+
+      {/* Text Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+        <h1 className="text-4xl md:text-6xl font-semibold text-[#2C5948]">
+          Pharmaceutical Pathways
+        </h1>
+
+        <p className="mt-4 max-w-2xl text-lg md:text-xl text-gray-800 font-medium">
+          Expert consulting in Biotech, cGMP, Quality Assurance, and Project <br />
+          Solutions for tomorrow&apos;s therapies.
+        </p>
+      </div>
+    </section>
+
+
+
 
       {/* ⭐ STATISTICS */}
-      <section className="bg-[#EAFFF7] py-10 md:py-16 mb-16">
+      {/* <section className="bg-[#EAFFF7] py-10 md:py-20 mb-16"> */}
+      <section className="bg-[#EAFFF7] py-10 md:py-40 mb-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
 
-            {['Audit Success Rate', 'Clinical Trials Supported', 'Years Average Experience'].map((item, i) => (
+            {/* {['Audit Success Rate', 'Clinical Trials Supported', 'Years Average Experience'].map((item, i) => (
               <div key={i} className="statistic-card flex flex-col justify-center items-center">
                 <h3 className="text-4xl md:text-5xl font-bold text-[#2C5948]">99%</h3>
                 <p className="text-gray-900 text-lg">{item}</p>
+              </div>
+            ))} */}
+
+            {Object.entries({
+              '99%': 'Audit Success Rate',
+              '50+': 'Clinical Trials Supported',
+              '15+': 'Years Average Experience'
+            }).map(([value, label], i) => (
+              <div key={i} className="statistic-card flex flex-col justify-center items-center">
+                <h3 className="text-4xl md:text-5xl font-bold text-[#2C5948]">{value}</h3>
+                <p className="text-gray-900 text-lg">{label}</p>
               </div>
             ))}
 
@@ -80,9 +122,9 @@ const Home = () => {
       </section>
 
       {/* ⭐ SERVICES SECTION */}
-      <section className="py-16 mb-16 z-0 relative">
+      {/* Heading */}
+      {/* <section className="py-16 mb-16 z-0 relative">
         <div className="container relative z-20 mx-auto px-4">
-          {/* Heading */}
           <div className="flex flex-col justify-center items-center mb-12 gap-4 px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center text-[#060C0C]">
               What We Do.
@@ -92,20 +134,63 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Responsive Grid */}
+          Responsive Grid
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {serviceCards.map((card, index) => (
+              // <div
+              //   key={index} className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg border relative sm:translate-y-0
+              //   ${index % 2 !== 0 ? 'lg:translate-y-12' : ''} border-gray-200 transition-all`} >
+              //   <img src={card.img} alt={card.title} className="h-10 p-2 mb-4 bg-[#EAFFF7] rounded-full" />
+              //   <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+              //     {card.title}
+              //   </h3>
+              //   <p className="text-gray-800 text-sm md:text-md">
+              //     {card.description}
+              //   </p>
+              // </div>
+
+
+              // <div
+              //   key={index} className={`bg-white p-6 rounded-2xl shadow-md hover:shadow-lg relative sm:translate-y-0
+              //   ${index % 2 !== 0 ? 'lg:translate-y-12' : ''} border-gray-200  transition-all`} >
+                  
+              //   <img src={card.img} alt={card.title} className="h-10 p-2 mb-4 bg-[#EAFFF7] rounded-full" />
+              //   <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+              //     {card.title}
+              //   </h3>
+              //   <p className="text-gray-800 text-sm md:text-md">
+              //     {card.description}
+              //   </p>
+              // </div>
+              
+              //  w-70 h-80
               <div
-                key={index} className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg border relative sm:translate-y-0
-                ${index % 2 !== 0 ? 'lg:translate-y-12' : ''} border-gray-200 transition-all`} >
-                <img src={card.img} alt={card.title} className="h-10 p-2 mb-4 bg-[#EAFFF7] rounded-full" />
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                key={index}
+                className={`
+                   max-h-80 min-h-80
+                   max-w-80 min-w-80
+                  bg-white p-7 rounded-2xl 
+                  shadow-[0px_4px_30px_rgba(0,0,0,0.08)]
+                  hover:shadow-[0px_8px_40px_rgba(0,0,0,0.12)]
+                  transition-all duration-300 
+                  cursor-pointer
+                  border border-transparent
+                  ${index % 2 !== 0 ? 'lg:translate-y-12' : ''}
+                `}
+              >
+                <div className="h-12 w-12 flex items-center justify-center bg-[#EAFFF7] rounded-full mb-5 shadow-sm">
+                  <img src={card.img} alt={card.title} className="h-6 w-6 opacity-80" />
+                </div>
+
+                <h3 className="text-xl md:text-[22px] font-semibold text-gray-900 mb-3">
                   {card.title}
                 </h3>
-                <p className="text-gray-800 text-sm md:text-md">
+
+                <p className="text-gray-700 text-sm leading-relaxed">
                   {card.description}
                 </p>
               </div>
+
             ))}
           </div>
 
@@ -116,7 +201,150 @@ const Home = () => {
             <img src='./Images/Vector1.svg' className='absolute right-0'  alt=''/>
 
         </div>
-      </section>
+      </section> */}
+
+
+{/* 
+<div className="
+  grid 
+  grid-cols-1 
+  sm:grid-cols-2 
+  lg:grid-cols-4 
+  gap-[10px] sm:gap-[20px] lg:gap-[30px]
+  place-items-center
+">
+  {serviceCards.map((card, index) => (
+    <div
+      key={index}
+      className={`
+        max-h-80 min-h-80
+        max-w-80 min-w-80
+        bg-white p-7 rounded-2xl 
+        shadow-[0px_4px_30px_rgba(0,0,0,0.08)]
+        hover:shadow-[0px_8px_40px_rgba(0,0,0,0.12)]
+        transition-all duration-300 
+        cursor-pointer
+        border border-transparent
+        ${index % 2 !== 0 ? 'lg:translate-y-12' : ''}
+      `}
+    >
+      <div className="h-12 w-12 flex items-center justify-center bg-[#EAFFF7] rounded-full mb-5 shadow-sm">
+        <img src={card.img} alt={card.title} className="h-6 w-6 opacity-80" />
+      </div>
+
+      <h3 className="text-xl md:text-[22px] font-semibold text-gray-900 mb-3">
+        {card.title}
+      </h3>
+
+      <p className="text-gray-700 text-sm leading-relaxed">
+        {card.description}
+      </p>
+    </div>
+  ))}
+</div>
+
+ */}
+
+
+
+
+<section className="py-16 mb-16 z-0 relative">
+  <div className="container relative z-20 mx-auto px-4">
+    {/* Header Section */}
+    <div className="flex flex-col justify-center items-center mb-12 gap-4 px-4">
+      <h2 className="text-3xl md:text-5xl font-bold text-center text-[#060C0C]">
+        What We Do.
+      </h2>
+      <p className="text-center max-w-2xl">
+        We provide end-to-end consulting for the pharmaceutical and biotech
+        industries, ensuring quality and compliance at every stage of
+        development.
+      </p>
+    </div>
+
+    {/* GRID CONTAINER 
+       - Added 'justify-items-center' to keep cards centered in their columns
+       - Changed 'lg:grid-cols-4' to 'xl:grid-cols-4' to prevent overlap
+    */}
+    <div
+      className="
+        grid 
+        grid-cols-1 
+        md:grid-cols-2 
+        xl:grid-cols-4 
+        gap-6 xl:gap-8
+        justify-items-center
+      "
+    >
+      {serviceCards.map((card, index) => (
+        <div
+          key={index}
+          className={`
+            /* --- CARD SIZING (Fixed as requested) --- */
+            max-h-80 min-h-80
+            max-w-80 min-w-80
+            
+            /* --- STYLING --- */
+            bg-white p-7 rounded-2xl 
+            shadow-[0px_4px_30px_rgba(0,0,0,0.08)]
+            hover:shadow-[0px_8px_40px_rgba(0,0,0,0.12)]
+            cursor-pointer
+            border border-transparent
+
+            /* --- SMOOTH ANIMATION FIX --- */
+            /* 1. Target specific properties to avoid resize glitches */
+            transition-[transform,box-shadow] 
+            duration-500 
+            ease-out
+            
+            /* 2. Define the base transform state */
+            transform translate-y-0
+
+            /* 3. The Stagger Effect (Only applies on XL screens where grid is 4-cols) */
+            ${index % 2 !== 0 ? "xl:translate-y-12" : ""}
+          `}
+        >
+          <div className="h-12 w-12 flex items-center justify-center bg-[#EAFFF7] rounded-full mb-5 shadow-sm">
+            <img
+              src={card.img}
+              alt={card.title}
+              className="h-6 w-6 opacity-80"
+            />
+          </div>
+
+          <h3 className="text-xl md:text-[22px] font-semibold text-gray-900 mb-3">
+            {card.title}
+          </h3>
+
+          <p className="text-gray-700 text-sm leading-relaxed">
+            {card.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Background Decor */}
+  <div className="absolute z-10 top-0 left-0 h-full w-full py-30 pointer-events-none">
+    <img src="./Images/Vector2.svg" className="absolute left-0" alt="" />
+    <img src="./Images/Vector1.svg" className="absolute right-0" alt="" />
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       {/* ⭐ CEO SECTION */}
       <section className='py-16 mb-16'>
@@ -146,6 +374,8 @@ const Home = () => {
 
         </div>
       </section>
+
+            {/* <LogoScroller/> */}
 
       {/* ⭐ REGULATORY COMPLIANCE SECTION */}
       <section className="bg-[#EAFFF7] py-16 px-6 md:px-16">
