@@ -31,11 +31,10 @@ const Home = () => {
     <Layout>
 
       {/* ⭐ HERO SECTION */}
-      <section className="py-16 min-h-[70vh] md:min-h-[90vh] mx-auto px-4 flex items-center">
+      {/* <section className="py-16 min-h-[70vh] md:min-h-[90vh] mx-auto px-4 flex items-center">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-10">
 
-            {/* TEXT */}
             <div className="w-full md:w-[70%] flex flex-col justify-center text-center md:text-left">
               <h1 className="text-4xl md:text-6xl font-extrabold text-[#060C0C] leading-tight">
                 Pioneering Pharmaceutical Pathways
@@ -49,7 +48,7 @@ const Home = () => {
               </span>
             </div>
 
-            {/* VIDEO */}
+            
             <div className="w-full md:w-[30%]">
               <video
                 src="./videos/sample.mp4"
@@ -61,8 +60,33 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+      <section className="relative w-full h-screen">
+      
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          // backgroundImage: '/public/Images/lab.jpg'// <-- replace with your image
+          backgroundImage: "url('/Images/lab.jpg')"
+        }}
+      ></div>
 
+      {/* Green Tint Overlay */}
+      <div className="absolute inset-0 bg-[#ffffff] opacity-94"></div>
+
+      {/* Text Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+        <h1 className="text-4xl md:text-6xl font-semibold text-[#2C5948]">
+          Pharmaceutical Pathways
+        </h1>
+
+        <p className="mt-4 max-w-2xl text-lg md:text-xl text-gray-800 font-medium">
+          Expert consulting in Biotech, cGMP, Quality Assurance, and Project <br />
+          Solutions for tomorrow&apos;s therapies.
+        </p>
+      </div>
+    </section>
       {/* ⭐ STATISTICS */}
       <section className="bg-[#EAFFF7] py-10 md:py-16 mb-16">
         <div className="container mx-auto px-4">
