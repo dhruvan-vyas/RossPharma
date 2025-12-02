@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import LogoScroller from '../components/LogoScroller';
+import Navbar from '../components/Navbar';
 // import { Red_Hat_Display } from "next/font/google";
 import Link from 'next/link';
 
@@ -63,8 +64,9 @@ const Home = () => {
           </div>
         </div>
       </section> */}
+
 <section className="relative w-full h-screen">
-      
+
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -80,13 +82,20 @@ const Home = () => {
       {/* Text Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
         <h1 className="text-4xl md:text-6xl font-semibold text-[#2C5948]">
-          Pharmaceutical Pathways
+          {/* Pharmaceutical Pathways */}
+          {/* HEALING THE FUTURE */}
+          Healing The Future
         </h1>
 
         <p className="mt-4 max-w-2xl text-lg md:text-xl text-gray-800 font-medium">
           Expert consulting in Biotech, cGMP, Quality Assurance, and Project <br />
           Solutions for tomorrow&apos;s therapies.
         </p>
+        
+        <span className="mt-8 pharma-button w-fit mx-auto md:mx-0">
+          <Link href="/services">Our Services</Link>
+        </span>
+
       </div>
     </section>
 
@@ -98,13 +107,6 @@ const Home = () => {
       <section className="bg-[#EAFFF7] py-10 md:py-40 mb-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-
-            {/* {['Audit Success Rate', 'Clinical Trials Supported', 'Years Average Experience'].map((item, i) => (
-              <div key={i} className="statistic-card flex flex-col justify-center items-center">
-                <h3 className="text-4xl md:text-5xl font-bold text-[#2C5948]">99%</h3>
-                <p className="text-gray-900 text-lg">{item}</p>
-              </div>
-            ))} */}
 
             {Object.entries({
               '99%': 'Audit Success Rate',
@@ -141,14 +143,31 @@ const Home = () => {
        - Added 'justify-items-center' to keep cards centered in their columns
        - Changed 'lg:grid-cols-4' to 'xl:grid-cols-4' to prevent overlap
     */}
+{/* 
+              <div
+                key={index} className={bg-white p-6 rounded-2xl shadow-md hover:shadow-lg relative sm:translate-y-0
+                ${index % 2 !== 0 ? 'lg:translate-y-12' : ''} border-gray-200  transition-all} >
+                  
+                <img src={card.img} alt={card.title} className="h-10 p-2 mb-4 bg-[#EAFFF7] rounded-full" />
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                  {card.title}
+                </h3>
+                <p className="text-gray-800 text-sm md:text-md">
+                  {card.description}
+                </p>
+              </div> */}
+
     <div
+      // gap-6 xl:gap-8
       className="
         grid 
         grid-cols-1 
         md:grid-cols-2 
         xl:grid-cols-4 
-        gap-6 xl:gap-8
+        gap-6 2xl:gap-x-0 xl:gap-x-20 lg:gap-10
+        lg:gap-y-10 md:gap-y-10 
         justify-items-center
+        p-20px
       "
     >
       {serviceCards.map((card, index) => (
@@ -156,13 +175,14 @@ const Home = () => {
           key={index}
           className={`
             /* --- CARD SIZING (Fixed as requested) --- */
-            max-h-80 min-h-80
+            max-h-80 min-h-60
             max-w-80 min-w-80
             
             /* --- STYLING --- */
-            bg-white p-7 rounded-2xl 
+            bg-white p-6 rounded-2xl 
             shadow-[0px_4px_30px_rgba(0,0,0,0.08)]
-            hover:shadow-[0px_8px_40px_rgba(0,0,0,0.12)]
+            hover:shadow-[0px_8px_40px_rgba(0,0,0,0.15)]
+
             cursor-pointer
             border border-transparent
 
@@ -171,15 +191,19 @@ const Home = () => {
             transition-[transform,box-shadow] 
             duration-500 
             ease-out
-            
             /* 2. Define the base transform state */
-            transform translate-y-0
+            transform-translate-y-0
+            
 
             /* 3. The Stagger Effect (Only applies on XL screens where grid is 4-cols) */
             ${index % 2 !== 0 ? "xl:translate-y-12" : ""}
+            // ${index % 2 !== 0 ? "lg:translate-y-12" : ""}
           `}
         >
-          <div className="h-12 w-12 flex items-center justify-center bg-[#EAFFF7] rounded-full mb-5 shadow-sm">
+          <div 
+          className="h-12 w-12 flex items-center justify-center bg-[#EAFFF7] rounded-full mb-5 shadow-sm"
+          // className="h-10 w-10 p-2 mb-4 bg-[#EAFFF7] rounded-full"
+          >
             <img
               src={card.img}
               alt={card.title}
@@ -187,11 +211,17 @@ const Home = () => {
             />
           </div>
 
-          <h3 className="text-xl md:text-[22px] font-semibold text-gray-900 mb-3">
+          <h3 
+          className="text-xl md:text-[22px] font-semibold text-gray-900 mb-3"
+          //  className="text-xl md:text-2xl font-bold text-gray-900 mb-2"
+          >
             {card.title}
           </h3>
 
-          <p className="text-gray-700 text-sm leading-relaxed">
+          <p 
+          // className="text-gray-800 text-sm md:text-md"
+          className="text-gray-700 text-sm leading-relaxed"
+          >
             {card.description}
           </p>
         </div>
@@ -201,8 +231,8 @@ const Home = () => {
 
   {/* Background Decor */}
   <div className="absolute z-10 top-0 left-0 h-full w-full py-30 pointer-events-none">
-    <img src="./Images/Vector2.svg" className="absolute left-0" alt="" />
-    <img src="./Images/Vector1.svg" className="absolute right-0" alt="" />
+    <img src="./Images/Vector2.svg" className="absolute left-0 top-20 " alt="" />
+    <img src="./Images/Vector1.svg" className="absolute right-0 pt-[400px] md:pt-0" alt="" />
   </div>
 </section>
 
