@@ -65,8 +65,7 @@ const Home = () => {
         </div>
       </section> */}
 
-<section className="relative w-full h-screen">
-
+<section className="relative w-full h-[96vh]">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -74,14 +73,13 @@ const Home = () => {
           // backgroundImage: '/public/Images/lab.jpg'// <-- replace with your image
           backgroundImage: "url('/Images/lab.jpg')"
         }}
-      ></div>
-
+        ></div>
       {/* Green Tint Overlay */}
-      <div className="absolute inset-0 bg-[#ffffff] opacity-94"></div>
+      <div className="absolute inset-0 bg-[#ffffff] opacity-90"></div>
 
       {/* Text Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <h1 className="text-4xl md:text-6xl font-semibold text-[#2C5948]">
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 ">
+        <h1 className="text-4xl md:text-6xl font-semibold text-[#2C5948] mb-5">
           {/* Pharmaceutical Pathways */}
           {/* HEALING THE FUTURE */}
           Healing The Future
