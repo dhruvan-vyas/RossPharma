@@ -45,7 +45,7 @@ const Services = () => {
   return (
     <Layout>
       {/* ⭐ HEADER SECTION */}
-      <section className=" mt-18  px-4 bg-white">
+      <section className="h-100 pt-20 mt-0 px-4 bg-white">
         <div className="container py-16 mx-auto text-center max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#060C0C] mb-6">
             Our Services & Solutions

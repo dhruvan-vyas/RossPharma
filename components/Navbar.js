@@ -184,7 +184,7 @@ const Navbar = () => {
 
   return (
     // <header className="fixed top-0 mx-auto left-0 right-0 z-50 bg-white/0 ">
-    <header className="flex top-0 mx-auto left-0 right-0 z-50 bg-white/0 ">
+    <header className="absolute flex top-0 mx-auto left-0 right-0 z-50 bg-white/0 ">
 
       
       <div className="container mx-auto px-4">

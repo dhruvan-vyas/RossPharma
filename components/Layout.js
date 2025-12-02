@@ -50,7 +50,9 @@ const Layout = ({ children, title = 'RossPharma.org' }) => {
         <link rel="icon" href="/logo.png" />
       </Head>
      {/* Main Header */}
+     <div className='absolure'>
       <Navbar />
+     </div>
     {/* Main Content */}
       {/* <main className={redHat.className}> */}
       <main className={`${poppins.className}`}>

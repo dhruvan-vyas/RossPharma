@@ -65,7 +65,7 @@ const Home = () => {
         </div>
       </section> */}
 
-<section className="relative w-full h-[96vh]">
+<section className="relative w-full h-screen">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -76,7 +76,7 @@ const Home = () => {
         ></div>
       {/* Green Tint Overlay */}
       <div className="absolute inset-0 bg-[#ffffff] opacity-90"></div>
-
+{/* <Navbar/> */}
       {/* Text Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 ">
         <h1 className="text-4xl md:text-6xl font-semibold text-[#2C5948] mb-5">
@@ -96,6 +96,89 @@ const Home = () => {
 
       </div>
     </section>
+
+<section className="w-full max-w-6xl mx-auto px-6 lg:px-12 py-20">
+  
+  {/* Heading */}
+  <div className="text-center mb-12">
+    <h2 className="text-3xl md:text-5xl font-bold text-[#060C0C]">
+      About Us
+    </h2>
+    <p className="text-gray-600 max-w-2xl mx-auto mt-4">
+      We are a biotechnology consulting firm dedicated to elevating pharmaceutical 
+      and life-science businesses through scientific expertise, regulatory compliance, 
+      and operational excellence.
+    </p>
+  </div>
+
+  {/* Two-column layout */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    
+    {/* Left Section */}
+    <div className="space-y-6 text-gray-700 leading-relaxed">
+      <h3 className="text-2xl font-semibold text-[#2C5948]">
+        Who We Are
+      </h3>
+
+      <p>
+        Our team brings decades of combined experience in cGMP, pharmaceutical 
+        manufacturing, quality assurance, clinical operations, and global 
+        regulatory frameworks. We partner with organizations across biotechnology, 
+        pharma, and healthcare to build safe, efficient, and compliant processes.
+      </p>
+
+      <h3 className="text-2xl font-semibold text-[#2C5948] pt-4">
+        Our Mission
+      </h3>
+
+      <p>
+        We aim to bridge the gap between scientific innovation and regulatory clarity. 
+        By providing strategic guidance, operational support, and quality leadership, 
+        we ensure that every project meets global standards—safely and efficiently.
+      </p>
+    </div>
+
+    {/* Right Section (Feature Cards) */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      
+      <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+        <h4 className="text-xl font-semibold text-[#060C0C] mb-2">15+ Years Expertise</h4>
+        <p className="text-gray-600 text-sm">Experience across biotech, pharma, and healthcare projects.</p>
+      </div>
+
+      <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+        <h4 className="text-xl font-semibold text-[#060C0C] mb-2">Global Compliance</h4>
+        <p className="text-gray-600 text-sm">Expertise in FDA, EMA, WHO, and ICH regulatory frameworks.</p>
+      </div>
+
+      <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+        <h4 className="text-xl font-semibold text-[#060C0C] mb-2">Quality Leadership</h4>
+        <p className="text-gray-600 text-sm">Supporting organizations with QA, QC, validation & documentation.</p>
+      </div>
+
+      <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+        <h4 className="text-xl font-semibold text-[#060C0C] mb-2">Operational Excellence</h4>
+        <p className="text-gray-600 text-sm">Improving efficiency, reducing risk, and ensuring cGMP compliance.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

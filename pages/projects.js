@@ -63,7 +63,7 @@ const Projects = () => {
   return (
     <Layout title="Projects | RossPharma.org">
       {/* ⭐ HEADER SECTION */}
-      <section className="bg-[#EAFFF7] mt-12 py-20 px-4 relative overflow-hidden">
+      <section className="bg-[#EAFFF7] mt-0 h-100 pt-40 py-20 px-4 relative overflow-hidden">
        
         <div className="container mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#060C0C] mb-6">
