@@ -77,23 +77,41 @@ a {
 }
 
 /* Add this to the end of your styles/globals.css file */
-
+/* 
 @keyframes scroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-250px * 7)); /* Adjust 7 based on the number of logos */
+    transform: translateX(calc(-250px * 7)); 
   }
 }
 
 .scrolling-logos {
-  animation: scroll 40s linear infinite; /* Adjust 40s to change speed */
-  width: calc(250px * 14); /* 2x the number of logos to ensure seamless loop */
-}
-/* 
-1,70,000
-- 15,000
-- 25,000
+  animation: scroll 40s linear infinite; 
+  width: calc(250px * 14); 
+} */
 
-1,30,000 */
+
+
+
+.marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.marquee-inner {
+  display: flex;
+  animation: marquee-scroll 25s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

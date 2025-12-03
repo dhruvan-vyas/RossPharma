@@ -328,7 +328,7 @@ const Home = () => {
           {/* IMAGE */}
           <div className="w-full md:w-1/2 flex justify-center">
             <img
-              src="./ceo_profile.jpeg"
+              src="./Images/team.png"
               alt="CEO Joseph Ross"
               className="w-48 md:w-64 lg:w-72 h-auto rounded-full shadow-xl"
             />
@@ -350,7 +350,28 @@ const Home = () => {
         </div>
       </section>
 
-            {/* <LogoScroller/> */}
+
+      <section className="py-16 bg-[#F9FFFD]">
+        <div className="container mx-auto px-6 text-center">
+
+          {/* Section Heading */}
+          <h2 className="text-3xl font-bold text-[#2C5948]">
+            Trusted By Leading Brands
+          </h2>
+
+          <p className="text-gray-600 mt-3 mb-10 max-w-2xl mx-auto">
+            Our products and solutions are trusted by industry-leading companies 
+            across healthcare, pharmaceuticals, and biotechnology.
+          </p>
+
+          {/* Logo Scroller Component */}
+          <div className="mt-6">
+            <LogoScroller />
+          </div>
+
+        </div>
+      </section>
+
 
       {/* ⭐ REGULATORY COMPLIANCE SECTION */}
       <section className="bg-[#EAFFF7] py-16 px-6 md:px-16">
