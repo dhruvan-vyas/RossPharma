@@ -15,28 +15,34 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
+  
   background-color: #ffffff;
+}
+
+html {
   overflow-x: hidden;
+  
 }
 
-h2, h3, h4, h5, h6 {
-  /* color: #2c2c2c; */
-  color: #2C5948;
+body {
+  overflow-x: hidden;
+  overflow-y: visible !important; /* important for sticky */
 }
 
-h1 {
-  color: #2C5948;
-  font: sans-serif;
+.pharma-button {
+  border: 2px solid #204A3C;
+  background-color: #2C5948;
+  color: #F9FFFD;
+  padding: 0.25rem 1rem; 
+  border-radius: 9999px; 
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: all 0.3s ease;
+  display: inline-flex;
 }
 
-p, a, li {
-  color: #555;
-  /* color: #2C5948; */
-}
-
-span {
-  color: #204A3C;
+.pharma-button:hover {
+  background-color: #1A2E2C; 
 }
 
 a {

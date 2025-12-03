@@ -10,7 +10,16 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // ✔ Extend the default Next.js ESLint rules
   ...compat.extends("next/core-web-vitals"),
+  {
+    rules: {
+      "react/no-unescaped-entities": "off",
+      "@next/next/no-img-element": "off",
+    },
+  },
+
+  // ✔ Ignore build output folders
   {
     ignores: [
       "node_modules/**",

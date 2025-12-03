@@ -1,77 +1,384 @@
 import Layout from '../components/Layout';
-import LogoScroller from '../components/LogoScroller'; 
-
+import LogoScroller from '../components/LogoScroller';
+import Navbar from '../components/Navbar';
+// import { Red_Hat_Display } from "next/font/google";
 import Link from 'next/link';
 
 const Home = () => {
+
+  const serviceCards = [
+    {
+      title: 'Strategic QA Consulting',
+      description: 'We build scalable Quality Management Systems and provide strategic guidance to ensure compliance from development to commercial launch.',
+      img: '/icons/bulb.svg',
+    },
+    {
+      title: 'Clinical Trial Support',
+      description: 'Our team offers end-to-end support for clinical trials, including protocol development, site audits, and regulatory compliance to ensure successful study execution.',
+      img: '/icons/search.svg',
+    },
+    {
+      title: 'Global GMP Audits',
+      description: 'We conduct comprehensive cGMP audits for internal and external facilities, identifying gaps and ensuring you\'re prepared for global regulatory inspections.',
+      img: '/icons/service.svg',
+    },
+    {
+      title: 'Biotech Project Management',
+      description: 'Our experts manage timelines, risks, and communication to keep your development programs on track, on time, and on budget.',
+      img: '/icons/shield.svg',
+    }
+  ];
+
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-gray-50 to-gray-100 py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
-            Your Trusted Partner in Biotech Quality Assurance
-          </h1>
-          <p className="mt-6 text-lg text-gray-700 max-w-3xl mx-auto">
-            We provide expert consulting to ensure compliance, integrity, and operational excellence in the biotech and pharmaceutical industries.
-          </p>
-          <Link href="/contact">
-            <div className="mt-10 inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition-colors cursor-pointer">
-              Schedule a Consultation
-            </div>
-          </Link>
-        </div>
-      </section>
-      
-   
 
-      {/* Services Overview */}
-      <section className="py-16">
+      {/* ⭐ HERO SECTION */}
+      {/* <section className="py-16 min-h-[70vh] md:min-h-[90vh] mx-auto px-4 flex items-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
-            Our Core Solutions
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Service Card 1 */}
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Quality Audits</h3>
-              <p className="text-gray-600">
-                Comprehensive and objective audits to ensure compliance with global regulatory standards.
+          <div className="flex flex-col md:flex-row items-center gap-10">
+
+
+            <div className="w-full md:w-[70%] flex flex-col justify-center text-center md:text-left">
+              <h1 className="text-4xl md:text-6xl font-extrabold text-[#060C0C] leading-tight">
+                Pioneering Pharmaceutical Pathways
+              </h1>
+              <p className="mt-4 text-base md:text-lg text-gray-700 max-w-2xl mx-auto md:mx-0">
+                We provide expert consulting to ensure compliance, integrity, and operational excellence in the biotech and pharmaceutical industries.
               </p>
+
+              <span className="mt-8 pharma-button w-fit mx-auto md:mx-0">
+                <Link href="/services">Our Services</Link>
+              </span>
             </div>
-            {/* Service Card 2 */}
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">R&D Consulting</h3>
-              <p className="text-gray-600">
-                Guidance and support for research and development processes, from concept to commercialization.
-              </p>
+
+
+            <div className="w-full md:w-[30%]">
+              <video
+                src="./videos/sample.mp4"
+                autoPlay
+                loop
+                muted
+                className="w-full h-80 md:h-[350px] lg:h-[400px] object-cover rounded-xl shadow-lg"
+              ></video>
             </div>
-            {/* Service Card 3 */}
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Regulatory Submissions</h3>
-              <p className="text-gray-600">
-                Streamline your regulatory approval process with our expert support and documentation.
-              </p>
-            </div>
+          </div>
+        </div>
+      </section> */}
+
+<section className="relative w-full h-screen">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          // backgroundImage: '/public/Images/lab.jpg'// <-- replace with your image
+          backgroundImage: "url('/Images/lab.jpg')"
+        }}
+        ></div>
+      {/* Green Tint Overlay */}
+      <div className="absolute inset-0 bg-[#ffffff] opacity-90"></div>
+{/* <Navbar/> */}
+      {/* Text Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 ">
+        <h1 className="text-4xl md:text-6xl font-semibold text-[#2C5948] mb-5">
+          {/* Pharmaceutical Pathways */}
+          {/* HEALING THE FUTURE */}
+          Healing The Future
+        </h1>
+
+        <p className="mt-4 max-w-2xl text-lg md:text-xl text-gray-800 font-medium">
+          Expert consulting in Biotech, cGMP, Quality Assurance, and Project <br />
+          Solutions for tomorrow&apos;s therapies.
+        </p>
+        
+        <span className="mt-8 pharma-button w-fit mx-auto md:mx-0">
+          <Link href="/services">Our Services</Link>
+        </span>
+
+      </div>
+    </section>
+
+<section className="w-full max-w-6xl mx-auto px-6 lg:px-12 py-20">
+  
+  {/* Heading */}
+  <div className="text-center mb-12">
+    <h2 className="text-3xl md:text-5xl font-bold text-[#060C0C]">
+      About Us
+    </h2>
+    <p className="text-gray-600 max-w-2xl mx-auto mt-4">
+      We are a biotechnology consulting firm dedicated to elevating pharmaceutical 
+      and life-science businesses through scientific expertise, regulatory compliance, 
+      and operational excellence.
+    </p>
+  </div>
+
+  {/* Two-column layout */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    
+    {/* Left Section */}
+    <div className="space-y-6 text-gray-700 leading-relaxed">
+      <h3 className="text-2xl font-semibold text-[#2C5948]">
+        Who We Are
+      </h3>
+
+      <p>
+        Our team brings decades of combined experience in cGMP, pharmaceutical 
+        manufacturing, quality assurance, clinical operations, and global 
+        regulatory frameworks. We partner with organizations across biotechnology, 
+        pharma, and healthcare to build safe, efficient, and compliant processes.
+      </p>
+
+      <h3 className="text-2xl font-semibold text-[#2C5948] pt-4">
+        Our Mission
+      </h3>
+
+      <p>
+        We aim to bridge the gap between scientific innovation and regulatory clarity. 
+        By providing strategic guidance, operational support, and quality leadership, 
+        we ensure that every project meets global standards—safely and efficiently.
+      </p>
+    </div>
+
+    {/* Right Section (Feature Cards) */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      
+      <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+        <h4 className="text-xl font-semibold text-[#060C0C] mb-2">15+ Years Expertise</h4>
+        <p className="text-gray-600 text-sm">Experience across biotech, pharma, and healthcare projects.</p>
+      </div>
+
+      <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+        <h4 className="text-xl font-semibold text-[#060C0C] mb-2">Global Compliance</h4>
+        <p className="text-gray-600 text-sm">Expertise in FDA, EMA, WHO, and ICH regulatory frameworks.</p>
+      </div>
+
+      <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+        <h4 className="text-xl font-semibold text-[#060C0C] mb-2">Quality Leadership</h4>
+        <p className="text-gray-600 text-sm">Supporting organizations with QA, QC, validation & documentation.</p>
+      </div>
+
+      <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+        <h4 className="text-xl font-semibold text-[#060C0C] mb-2">Operational Excellence</h4>
+        <p className="text-gray-600 text-sm">Improving efficiency, reducing risk, and ensuring cGMP compliance.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* ⭐ STATISTICS */}
+      {/* <section className="bg-[#EAFFF7] py-10 md:py-20 mb-16"> */}
+      <section className="bg-[#EAFFF7] py-10 md:py-40 mb-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+
+            {Object.entries({
+              '99%': 'Audit Success Rate',
+              '50+': 'Clinical Trials Supported',
+              '15+': 'Years Average Experience'
+            }).map(([value, label], i) => (
+              <div key={i} className="statistic-card flex flex-col justify-center items-center">
+                <h3 className="text-4xl md:text-5xl font-bold text-[#2C5948]">{value}</h3>
+                <p className="text-gray-900 text-lg">{label}</p>
+              </div>
+            ))}
+
           </div>
         </div>
       </section>
 
-      <div className="w-full py-10">
-        <LogoScroller /> 
-        {/* <LogoCarousel />  */}
-      </div>
+      {/* ⭐ SERVICES SECTION */}
+      {/* Heading */}
+<section className="py-16 mb-16 z-0 relative">
+  <div className="container relative z-20 mx-auto px-4">
+    {/* Header Section */}
+    <div className="flex flex-col justify-center items-center mb-12 gap-4 px-4">
+      <h2 className="text-3xl md:text-5xl font-bold text-center text-[#060C0C]">
+        What We Do.
+      </h2>
+      <p className="text-center max-w-2xl">
+        We provide end-to-end consulting for the pharmaceutical and biotech
+        industries, ensuring quality and compliance at every stage of
+        development.
+      </p>
+    </div>
 
+    {/* GRID CONTAINER 
+       - Added 'justify-items-center' to keep cards centered in their columns
+       - Changed 'lg:grid-cols-4' to 'xl:grid-cols-4' to prevent overlap
+    */}
+{/* 
+              <div
+                key={index} className={bg-white p-6 rounded-2xl shadow-md hover:shadow-lg relative sm:translate-y-0
+                ${index % 2 !== 0 ? 'lg:translate-y-12' : ''} border-gray-200  transition-all} >
+                  
+                <img src={card.img} alt={card.title} className="h-10 p-2 mb-4 bg-[#EAFFF7] rounded-full" />
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                  {card.title}
+                </h3>
+                <p className="text-gray-800 text-sm md:text-md">
+                  {card.description}
+                </p>
+              </div> */}
 
-      {/* Testimonial Section */}
-      <section className="bg-blue-100 py-16">
-        <div className="container mx-auto px-4 text-center text-white">
-          <p className="text-xl md:text-2xl font-semibold max-w-4xl mx-auto">
-            "RossPharma's expertise was invaluable. Their guidance on our QA processes saved us months of work and ensured we passed our audit with flying colors."
+    <div
+      // gap-6 xl:gap-8
+      className="
+        grid 
+        grid-cols-1 
+        md:grid-cols-2 
+        xl:grid-cols-4 
+        gap-6 2xl:gap-x-0 xl:gap-x-20 lg:gap-10
+        lg:gap-y-10 md:gap-y-10 
+        justify-items-center
+        p-20px
+      "
+    >
+      {serviceCards.map((card, index) => (
+        <div
+          key={index}
+          className={`
+            /* --- CARD SIZING (Fixed as requested) --- */
+            max-h-80 min-h-60
+            max-w-80 min-w-80
+            
+            /* --- STYLING --- */
+            bg-white p-6 rounded-2xl 
+            shadow-[0px_4px_30px_rgba(0,0,0,0.08)]
+            hover:shadow-[0px_8px_40px_rgba(0,0,0,0.15)]
+
+            cursor-pointer
+            border border-transparent
+
+            /* --- SMOOTH ANIMATION FIX --- */
+            /* 1. Target specific properties to avoid resize glitches */
+            transition-[transform,box-shadow] 
+            duration-500 
+            ease-out
+            /* 2. Define the base transform state */
+            transform-translate-y-0
+            
+
+            /* 3. The Stagger Effect (Only applies on XL screens where grid is 4-cols) */
+            ${index % 2 !== 0 ? "xl:translate-y-12" : ""}
+            // ${index % 2 !== 0 ? "lg:translate-y-12" : ""}
+          `}
+        >
+          <div 
+          className="h-12 w-12 flex items-center justify-center bg-[#EAFFF7] rounded-full mb-5 shadow-sm"
+          // className="h-10 w-10 p-2 mb-4 bg-[#EAFFF7] rounded-full"
+          >
+            <img
+              src={card.img}
+              alt={card.title}
+              className="h-6 w-6 opacity-80"
+            />
+          </div>
+
+          <h3 
+          className="text-xl md:text-[22px] font-semibold text-gray-900 mb-3"
+          //  className="text-xl md:text-2xl font-bold text-gray-900 mb-2"
+          >
+            {card.title}
+          </h3>
+
+          <p 
+          // className="text-gray-800 text-sm md:text-md"
+          className="text-gray-700 text-sm leading-relaxed"
+          >
+            {card.description}
           </p>
-          <p className="mt-4 font-light">- Joseph Ross, PMP & CEO of BioSolutions Inc.</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Background Decor */}
+  <div className="absolute z-10 top-0 left-0 h-full w-full py-30 pointer-events-none">
+    <img src="./Images/Vector2.svg" className="absolute left-0 top-20 " alt="" />
+    <img src="./Images/Vector1.svg" className="absolute right-0 pt-[400px] md:pt-0" alt="" />
+  </div>
+</section>
+
+
+
+
+
+      {/* ⭐ CEO SECTION */}
+      <section className='py-16 mb-16'>
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
+
+          {/* IMAGE */}
+          <div className="w-full md:w-1/2 flex justify-center">
+            <img
+              src="./ceo_profile.jpeg"
+              alt="CEO Joseph Ross"
+              className="w-48 md:w-64 lg:w-72 h-auto rounded-full shadow-xl"
+            />
+          </div>
+
+          {/* TEXT */}
+          <div className="w-full md:w-1/2 text-center md:text-left">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#060C0C] mb-4">
+              Joseph Ross, PMP | Founder & CEO
+            </h2>
+            <p className="text-gray-800 mb-4">
+              Our philosophy is built on a foundation of deep scientific expertise and an unwavering commitment to quality. We believe in proactive partnership, embedding ourselves with our clients to navigate the complex journey from discovery to market.
+            </p>
+            <p className="text-[#2C5948] font-semibold p-3 border-l-4 border-[#2C5948]">
+              "Our vision is to be the catalyst for your success, turning scientific discovery into life-changing therapies."
+            </p>
+          </div>
+
         </div>
       </section>
+
+            {/* <LogoScroller/> */}
+
+      {/* ⭐ REGULATORY COMPLIANCE SECTION */}
+      <section className="bg-[#EAFFF7] py-16 px-6 md:px-16">
+        <div className='flex justify-center'>
+          <div className='text-center max-w-3xl'>
+
+            <h2 className="text-3xl md:text-5xl font-semibold text-[#060C0C] leading-tight">
+              Knowledgeable of International Regulations and Standards
+            </h2>
+            <p className="mt-4 font-light text-gray-800 text-sm md:text-lg">
+              Our global competence ensures your projects meet the highest standards of compliance across key international markets.
+            </p>
+
+            <div className='flex flex-wrap justify-center gap-6 pt-8'>
+              {['FDA', 'EMA', 'ICH', 'ISO', 'Health Canada', 'MHRA'].map((label, i) => (
+                <span
+                  key={i}
+                  className='text-base md:text-xl uppercase font-bold text-[#2C5948]'
+                >
+                  {label}
+                </span>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </section>
+
     </Layout>
   );
 };
