@@ -194,9 +194,18 @@ const Navbar = () => {
 
           {/* Left side */}
           <div className="flex items-center space-x-10">
-            <Link href="/" className="flex items-center">
-              <img src="/logo.png" alt="Rosspharma Logo" className="h-10" />
-              <h3 className="uppercase text-[#2C5948] font-bold text-2xl ml-2">
+            {/* // <Link href="/" className="flex items-center">
+            //   <img src="/logo.png" alt="Rosspharma Logo" className="h-10" />
+            //   <h3 className="uppercase text-[#2C5948] font-bold text-2xl ml-2">
+            //     Rosspharma
+            //   </h3>
+            // </Link> */}
+            <Link
+              href="/"
+              className="inline-flex items-center cursor-pointer select-none active:scale-95 transition"
+            >
+              <img src="/logo.png" alt="Rosspharma Logo" className="h-10 pointer-events-none" />
+              <h3 className="uppercase text-[#2C5948] font-bold text-2xl ml-2 pointer-events-none">
                 Rosspharma
               </h3>
             </Link>
@@ -217,7 +226,7 @@ const Navbar = () => {
                 );
               })}
             </nav>
-          </div>
+          </div> 
 
           {/* Right button */}
           <Link href="/contact" className="pharma-button flex items-center gap-2 group">
