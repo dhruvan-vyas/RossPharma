@@ -80,9 +80,13 @@ const About = () => {
       {/* <Navbar/> */}
       {/* 🧬 About Header Section */}
       <div className="pb-12 mt-0 h-100 pt-40 bg-white text-center border-b border-gray-100">
-        <h1 className="text-4xl font-extrabold text-[#060C0C] mb-2">
+        {/* <h1 className="text-4xl font-extrabold text-[#060C0C] mb-2"> */}
+          {/* About RossPharma */}
+        {/* </h1> */}
+        <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#060C0C] mb-2 break-words leading-tight">
           About RossPharma
         </h1>
+
         <p className="text-lg text-gray-600 max-w-2xl mx-auto px-4">
           Empowering pharmaceutical and biotech companies through value-driven
           consulting led by regulatory expertise and strategic partnership.

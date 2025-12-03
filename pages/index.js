@@ -79,9 +79,7 @@ const Home = () => {
 {/* <Navbar/> */}
       {/* Text Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 ">
-        <h1 className="text-4xl md:text-6xl font-semibold text-[#2C5948] mb-5">
-          {/* Pharmaceutical Pathways */}
-          {/* HEALING THE FUTURE */}
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold text-[#2C5948] mb-5 break-words leading-tight">
           Healing The Future
         </h1>
 
