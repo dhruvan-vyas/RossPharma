@@ -46,7 +46,7 @@ const Home = () => {
       <div className="absolute inset-0 bg-[#ffffff] opacity-94"></div>
       {/* Text Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 ">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold text-[#2C5948] mb-5 break-word leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold text-[#2C5948] mb-2 break-word leading-tight">
           HEALING THE FUTURE
         </h1>
         {/* <h1 className="text-4xl sm:text-4xl md:text-6xl font-semibold text-[#2C5948] mb-4 break-after-all leading-tight tracking-[0.0em] "> */}
