@@ -46,13 +46,13 @@ const Home = () => {
       <div className="absolute inset-0 bg-[#ffffff] opacity-94"></div>
       {/* Text Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 ">
-        {/* <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold text-[#2C5948] mb-5 break-word leading-tight"> */}
-          {/* HEALING THE FUTURE */}
-        {/* </h1> */}
-        <h1 className="text-4xl sm:text-4xl md:text-6xl font-semibold text-[#2C5948] mb-4 break-after-all leading-tight tracking-[0.0em] ">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold text-[#2C5948] mb-5 break-word leading-tight">
           HEALING THE FUTURE
-          {/* Healing The Future */}
         </h1>
+        {/* <h1 className="text-4xl sm:text-4xl md:text-6xl font-semibold text-[#2C5948] mb-4 break-after-all leading-tight tracking-[0.0em] "> */}
+          {/* HEALING THE FUTURE */}
+          {/* Healing The Future */}
+        {/* </h1> */}
 
         <p className="mt-4 max-w-2xl text-lg md:text-xl text-gray-800 font-medium">
           Expert consulting in Biotech, cGMP, Quality Assurance, and Project <br />
@@ -135,6 +135,7 @@ const Home = () => {
       </div>
 
     </section>
+
       {/* ⭐ STATISTICS */}
       {/* <section className="bg-[#EAFFF7] py-10 md:py-20 mb-16"> */}
       <section className="bg-[#EAFFF7] py-10 md:py-40 mb-16">
@@ -171,8 +172,27 @@ const Home = () => {
             development.
           </p>
         </div>
-        
+
+        {/* GRID CONTAINER 
+          - Added 'justify-items-center' to keep cards centered in their columns
+          - Changed 'lg:grid-cols-4' to 'xl:grid-cols-4' to prevent overlap
+        */}
+    {/* 
+                  <div
+                    key={index} className={bg-white p-6 rounded-2xl shadow-md hover:shadow-lg relative sm:translate-y-0
+                    ${index % 2 !== 0 ? 'lg:translate-y-12' : ''} border-gray-200  transition-all} >
+                      
+                    <img src={card.img} alt={card.title} className="h-10 p-2 mb-4 bg-[#EAFFF7] rounded-full" />
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                      {card.title}
+                    </h3>
+                    <p className="text-gray-800 text-sm md:text-md">
+                      {card.description}
+                    </p>
+                  </div> */}
+
         <div
+          // gap-6 xl:gap-8
           className="
             grid 
             grid-cols-1 
