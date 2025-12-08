@@ -20,7 +20,7 @@ const Navbar = () => {
         <div className="container mx-auto px-4 flex justify-between items-center">
 
           {/* Left side */}
-          <div className="flex items-center space-x-10">
+          <div className="flex items-center space-x-6">
             <Link
               href="/"
               className="inline-flex items-center cursor-pointer select-none active:scale-95 transition"

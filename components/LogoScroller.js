@@ -201,7 +201,8 @@ const LogoScroller = () => {
   const loopLogos = [...clientLogos, ...clientLogos];
 
   return (
-    <div className="overflow-hidden py-10 bg-[#F9FFFD] border-y border-[#DDE7E3]">
+    // <div className="overflow-hidden py-10 bg-[#F9FFFD]">
+    <div className="overflow-hidden py-10 bg-[#FFFFFF]">
       <div className="marquee flex items-center">
         <div className="marquee-inner flex items-center gap-16">
           {loopLogos.map((logo, index) => (
