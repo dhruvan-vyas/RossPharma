@@ -1,9 +1,14 @@
+"use client";
+gsap.registerPlugin(ScrollTrigger);
 import Layout from '../components/Layout';
 import LogoScroller from '../components/LogoScroller';
 // import Navbar from '../components/Navbar';
 import PrivacyPolicy from '../components/privacy-policy';
 // import { Red_Hat_Display } from "next/font/google";
 import Link from 'next/link';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
 
 const Home = () => {
 
@@ -29,118 +34,218 @@ const Home = () => {
       img: '/icons/shield.svg',
     }
   ];
+  const heroRef = useRef(null);
+  const aboutRef = useRef(null);
+  const statsRef = useRef(null);
+  const servicesRef = useRef(null);
+  const ceoRef = useRef(null);
+  const regRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+
+      // 🔹 HERO
+      gsap.fromTo(
+        heroRef.current.children,
+        { opacity: 0, y: -40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power2.out",
+          stagger: 0.25,
+        }
+      );
+
+      // 🔹 ABOUT
+      animateGroup(
+        aboutRef.current.querySelectorAll(".about-animate"),
+        aboutRef.current,
+        { y: 60 }
+      );
+
+      // 🔹 STATS
+      animateGroup(statsRef.current.children, statsRef.current, { y: 40 });
+
+      // 🔹 SERVICES
+      animateGroup(servicesRef.current.children, servicesRef.current, { y: 50 });
+
+      // 🔹 CEO TIMELINE
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: ceoRef.current,
+          start: "top 75%",
+          once: true,
+        },
+      })
+        .from(".ceo-img", {
+          x: -60,
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out",
+        })
+        .from(
+          ".ceo-text",
+          {
+            x: 60,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out",
+          },
+          "-=0.6"
+        );
+
+      // 🔹 REGULATORY
+      animateGroup(regRef.current.children, regRef.current, {
+        y: 20,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power1.out",
+      });
+
+    });
+
+    return () => ctx.revert();
+  }, []);
+  const animateGroup = (
+    elements,
+    trigger,
+    {
+      y = 40,
+      duration = 1,
+      stagger = 0.2,
+      ease = "power2.out",
+    } = {}
+  ) => {
+    gsap.fromTo(
+      elements,
+      { opacity: 0, y },
+      {
+        opacity: 1,
+        y: 0,
+        duration,
+        stagger,
+        ease,
+        scrollTrigger: {
+          trigger,
+          start: "top 75%",
+          once: true,
+        },
+      }
+    );
+  };
 
   return (
     <Layout>
 
-<section className="relative w-full h-screen">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          // backgroundImage: '/public/Images/lab.jpg'// <-- replace with your image
-          backgroundImage: "url('/Images/lab.jpg')"
-        }}
+      <section className="relative w-full h-screen">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            // backgroundImage: '/public/Images/lab.jpg'// <-- replace with your image
+            backgroundImage: "url('/Images/lab.jpg')"
+          }}
         ></div>
-      {/* Green Tint Overlay */}
-      <div className="absolute inset-0 bg-[#ffffff] opacity-94"></div>
-      {/* Text Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 ">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold text-[#2C5948] mb-2 break-word leading-tight">
-          HEALING THE FUTURE
-        </h1>
-        {/* <h1 className="text-4xl sm:text-4xl md:text-6xl font-semibold text-[#2C5948] mb-4 break-after-all leading-tight tracking-[0.0em] "> */}
+        {/* Green Tint Overlay */}
+        <div className="absolute inset-0 bg-[#ffffff] opacity-94"></div>
+        {/* Text Content */}
+        <div ref={heroRef} className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 ">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold text-[#2C5948] mb-2 break-word leading-tight">
+            HEALING THE FUTURE
+          </h1>
+          {/* <h1 className="text-4xl sm:text-4xl md:text-6xl font-semibold text-[#2C5948] mb-4 break-after-all leading-tight tracking-[0.0em] "> */}
           {/* HEALING THE FUTURE */}
           {/* Healing The Future */}
-        {/* </h1> */}
+          {/* </h1> */}
 
-        <p className="mt-4 max-w-2xl text-lg md:text-xl text-gray-800 font-medium">
-          Expert consulting in Biotech, cGMP, Quality Assurance, and Project <br />
-          Solutions for tomorrow&apos;s therapies.
-        </p>
-        
-        <span className="mt-8 pharma-button w-fit mx-auto md:mx-0">
-          <Link href="/services">Our Services</Link>
-        </span>
-
-      </div>
-    </section>
-
-    <section className="w-full max-w-6xl mx-auto px-6 lg:px-12 py-20">
-      
-      {/* Heading */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-5xl font-bold text-[#060C0C]">
-          About Us
-        </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto mt-4">
-          We are a biotechnology consulting firm dedicated to elevating pharmaceutical 
-          and life-science businesses through scientific expertise, regulatory compliance, 
-          and operational excellence.
-        </p>
-      </div>
-
-      {/* Two-column layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        
-        {/* Left Section */}
-        <div className="space-y-6 text-gray-700 leading-relaxed">
-          <h3 className="text-2xl font-semibold text-[#2C5948]">
-            Who We Are
-          </h3>
-
-          <p>
-            Our team brings decades of combined experience in cGMP, pharmaceutical 
-            manufacturing, quality assurance, clinical operations, and global 
-            regulatory frameworks. We partner with organizations across biotechnology, 
-            pharma, and healthcare to build safe, efficient, and compliant processes.
+          <p className="mt-4 max-w-2xl text-lg md:text-xl text-gray-800 font-medium">
+            Expert consulting in Biotech, cGMP, Quality Assurance, and Project <br />
+            Solutions for tomorrow&apos;s therapies.
           </p>
 
-          <h3 className="text-2xl font-semibold text-[#2C5948] pt-4">
-            Our Mission
-          </h3>
+          <span className="mt-8 pharma-button opacity-0 w-fit mx-auto md:mx-0">
+            <Link href="/services">Our Services</Link>
+          </span>
 
-          <p>
-            We aim to bridge the gap between scientific innovation and regulatory clarity. 
-            By providing strategic guidance, operational support, and quality leadership, 
-            we ensure that every project meets global standards—safely and efficiently.
+        </div>
+      </section>
+
+      <section className="w-full max-w-6xl mx-auto px-6 lg:px-12 py-20">
+
+        {/* Heading */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-[#060C0C]">
+            About Us
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto mt-4">
+            We are a biotechnology consulting firm dedicated to elevating pharmaceutical
+            and life-science businesses through scientific expertise, regulatory compliance,
+            and operational excellence.
           </p>
         </div>
 
-        {/* Right Section (Feature Cards) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          
-          <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
-            <h4 className="text-xl font-semibold text-[#060C0C] mb-2">15+ Years Expertise</h4>
-            <p className="text-gray-600 text-sm">Experience across biotech, pharma, and healthcare projects.</p>
+        {/* Two-column layout */}
+        <div ref={aboutRef} className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+          {/* Left Section */}
+          <div className="about-animate space-y-6 text-gray-700 leading-relaxed">
+            <h3 className="text-2xl font-semibold text-[#2C5948]">
+              Who We Are
+            </h3>
+
+            <p>
+              Our team brings decades of combined experience in cGMP, pharmaceutical
+              manufacturing, quality assurance, clinical operations, and global
+              regulatory frameworks. We partner with organizations across biotechnology,
+              pharma, and healthcare to build safe, efficient, and compliant processes.
+            </p>
+
+            <h3 className="text-2xl font-semibold text-[#2C5948] pt-4">
+              Our Mission
+            </h3>
+
+            <p>
+              We aim to bridge the gap between scientific innovation and regulatory clarity.
+              By providing strategic guidance, operational support, and quality leadership,
+              we ensure that every project meets global standards—safely and efficiently.
+            </p>
           </div>
 
-          <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
-            <h4 className="text-xl font-semibold text-[#060C0C] mb-2">Global Compliance</h4>
-            <p className="text-gray-600 text-sm">Expertise in FDA, EMA, WHO, and ICH regulatory frameworks.</p>
-          </div>
+          {/* Right Section (Feature Cards) */}
+          <div className="about-animate grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-          <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
-            <h4 className="text-xl font-semibold text-[#060C0C] mb-2">Quality Leadership</h4>
-            <p className="text-gray-600 text-sm">Supporting organizations with QA, QC, validation & documentation.</p>
-          </div>
+            <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+              <h4 className="text-xl font-semibold text-[#060C0C] mb-2">15+ Years Expertise</h4>
+              <p className="text-gray-600 text-sm">Experience across biotech, pharma, and healthcare projects.</p>
+            </div>
 
-          <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
-            <h4 className="text-xl font-semibold text-[#060C0C] mb-2">Operational Excellence</h4>
-            <p className="text-gray-600 text-sm">Improving efficiency, reducing risk, and ensuring cGMP compliance.</p>
+            <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+              <h4 className="text-xl font-semibold text-[#060C0C] mb-2">Global Compliance</h4>
+              <p className="text-gray-600 text-sm">Expertise in FDA, EMA, WHO, and ICH regulatory frameworks.</p>
+            </div>
+
+            <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+              <h4 className="text-xl font-semibold text-[#060C0C] mb-2">Quality Leadership</h4>
+              <p className="text-gray-600 text-sm">Supporting organizations with QA, QC, validation & documentation.</p>
+            </div>
+
+            <div className="p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+              <h4 className="text-xl font-semibold text-[#060C0C] mb-2">Operational Excellence</h4>
+              <p className="text-gray-600 text-sm">Improving efficiency, reducing risk, and ensuring cGMP compliance.</p>
+            </div>
+
           </div>
 
         </div>
 
-      </div>
-
-    </section>
+      </section>
 
       {/* ⭐ STATISTICS */}
       {/* <section className="bg-[#EAFFF7] py-10 md:py-20 mb-16"> */}
       <section className="bg-[#EAFFF7] py-10 md:py-40 mb-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+          <div ref={statsRef} className=" grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
 
             {Object.entries({
               '99%': 'Audit Success Rate',
@@ -157,27 +262,27 @@ const Home = () => {
         </div>
       </section>
 
-    {/* ⭐ SERVICES SECTION */}
-    {/* Heading */}
-    <section className="py-16 mb-16 z-0 relative">
-      <div className="container relative z-20 mx-auto px-4">
-        {/* Header Section */}
-        <div className="flex flex-col justify-center items-center mb-12 gap-4 px-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-center text-[#060C0C]">
-            What We Do.
-          </h2>
-          <p className="text-center max-w-2xl">
-            We provide end-to-end consulting for the pharmaceutical and biotech
-            industries, ensuring quality and compliance at every stage of
-            development.
-          </p>
-        </div>
+      {/* ⭐ SERVICES SECTION */}
+      {/* Heading */}
+      <section className="py-16 mb-16 z-0 relative">
+        <div className="container relative z-20 mx-auto px-4">
+          {/* Header Section */}
+          <div className="flex flex-col justify-center items-center mb-12 gap-4 px-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-center text-[#060C0C]">
+              What We Do.
+            </h2>
+            <p className="text-center max-w-2xl">
+              We provide end-to-end consulting for the pharmaceutical and biotech
+              industries, ensuring quality and compliance at every stage of
+              development.
+            </p>
+          </div>
 
-        {/* GRID CONTAINER 
+          {/* GRID CONTAINER 
           - Added 'justify-items-center' to keep cards centered in their columns
           - Changed 'lg:grid-cols-4' to 'xl:grid-cols-4' to prevent overlap
         */}
-    {/* 
+          {/* 
                   <div
                     key={index} className={bg-white p-6 rounded-2xl shadow-md hover:shadow-lg relative sm:translate-y-0
                     ${index % 2 !== 0 ? 'lg:translate-y-12' : ''} border-gray-200  transition-all} >
@@ -191,9 +296,9 @@ const Home = () => {
                     </p>
                   </div> */}
 
-        <div
-          // gap-6 xl:gap-8
-          className="
+          <div ref={servicesRef}
+            // gap-6 xl:gap-8
+            className="
             grid 
             grid-cols-1 
             md:grid-cols-2 
@@ -205,11 +310,11 @@ const Home = () => {
             justify-items-center
             p-20px
           "
-        >
-          {serviceCards.map((card, index) => (
-            <div
-              key={index}
-              className={`
+          >
+            {serviceCards.map((card, index) => (
+              <div
+                key={index}
+                className={`
                 /* --- CARD SIZING (Fixed as requested) --- */
                 max-h-80 min-h-60
                 max-w-80 min-w-80
@@ -235,53 +340,50 @@ const Home = () => {
                 ${index % 2 !== 0 ? "xl:translate-y-12" : ""}
                 // ${index % 2 !== 0 ? "lg:translate-y-12" : ""}
               `}
-            >
-              <div 
-              className="h-12 w-12 flex items-center justify-center bg-[#EAFFF7] rounded-full mb-5 shadow-sm"
-              // className="h-10 w-10 p-2 mb-4 bg-[#EAFFF7] rounded-full"
               >
-                <img
-                  src={card.img}
-                  alt={card.title}
-                  className="h-6 w-6 opacity-80"
-                />
+                <div
+                  className="h-12 w-12 flex items-center justify-center bg-[#EAFFF7] rounded-full mb-5 shadow-sm"
+                // className="h-10 w-10 p-2 mb-4 bg-[#EAFFF7] rounded-full"
+                >
+                  <img
+                    src={card.img}
+                    alt={card.title}
+                    className="h-6 w-6 opacity-80"
+                  />
+                </div>
+
+                <h3
+                  className="text-xl md:text-[22px] font-semibold text-gray-900 mb-3"
+                //  className="text-xl md:text-2xl font-bold text-gray-900 mb-2"
+                >
+                  {card.title}
+                </h3>
+
+                <p
+                  // className="text-gray-800 text-sm md:text-md"
+                  className="text-gray-700 text-sm leading-relaxed"
+                >
+                  {card.description}
+                </p>
               </div>
-
-              <h3 
-              className="text-xl md:text-[22px] font-semibold text-gray-900 mb-3"
-              //  className="text-xl md:text-2xl font-bold text-gray-900 mb-2"
-              >
-                {card.title}
-              </h3>
-
-              <p 
-              // className="text-gray-800 text-sm md:text-md"
-              className="text-gray-700 text-sm leading-relaxed"
-              >
-                {card.description}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Background Decor */}
-      <div className="absolute z-10 top-0 left-0 h-full w-full py-30 pointer-events-none">
-        <img src="./Images/Vector2.svg" className="absolute left-0 top-20 " alt="" />
-        <img src="./Images/Vector1.svg" className="absolute right-0 pt-[400px] md:pt-0" alt="" />
-      </div>
-    </section>
-
-
-
+        {/* Background Decor */}
+        <div className="absolute z-10 top-0 left-0 h-full w-full py-30 pointer-events-none">
+          <img src="./Images/Vector2.svg" className="absolute left-0 top-20 " alt="" />
+          <img src="./Images/Vector1.svg" className="absolute right-0 pt-[400px] md:pt-0" alt="" />
+        </div>
+      </section>
 
 
       {/* ⭐ CEO SECTION */}
       <section className='py-16 mb-16'>
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
+        <div ref={ceoRef} className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
 
           {/* IMAGE */}
-          <div className="w-full md:w-1/2 flex justify-center">
+          <div className="ceo-img w-full md:w-1/2 flex justify-center">
             <img
               src="./Images/team.png"
               alt="CEO Joseph Ross"
@@ -290,7 +392,7 @@ const Home = () => {
           </div>
 
           {/* TEXT */}
-          <div className="w-full md:w-1/2 text-center md:text-left">
+          <div className="ceo-text w-full md:w-1/2 text-center md:text-left">
             <h2 className="text-2xl md:text-3xl font-bold text-[#060C0C] mb-4">
               Joseph Ross, PMP | Founder & CEO
             </h2>
@@ -316,7 +418,7 @@ const Home = () => {
           </h2>
 
           <p className="text-gray-600 mt-3 mb-10 max-w-2xl mx-auto">
-            Our products and solutions are trusted by industry-leading companies 
+            Our products and solutions are trusted by industry-leading companies
             across healthcare, pharmaceuticals, and biotechnology.
           </p>
 
@@ -341,7 +443,7 @@ const Home = () => {
               Our global competence ensures your projects meet the highest standards of compliance across key international markets.
             </p>
 
-            <div className='flex flex-wrap justify-center gap-6 pt-8'>
+            <div ref={regRef} className='flex flex-wrap justify-center gap-6 pt-8'>
               {['FDA', 'EMA', 'ICH', 'ISO', 'Health Canada', 'MHRA'].map((label, i) => (
                 <span
                   key={i}

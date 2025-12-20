@@ -1,3 +1,10 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 import Layout from "../components/Layout";
 import Link from "next/link";
 
@@ -41,11 +48,92 @@ const Services = () => {
       icon: "/icons/bulb.svg",
     },
   ];
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      headerRef.current.children,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.1,
+        ease: "power2.out",
+        stagger: 0.2,
+      }
+    );
+  }, []);
+
+
+ useEffect(() => {
+  const cards = gsap.utils.toArray(".service-card");
+
+  cards.forEach((card, index) => {
+    gsap.fromTo(
+      card,
+      {
+        opacity: 0,
+        x: index % 2 === 0 ? -80 : 80,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        delay: index * 0.15,
+        duration: 0.9,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: card,          
+          start: "top 85%",       
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  });
+}, []);
+
+
+
+  useEffect(() => {
+    gsap.fromTo(
+      ".service-img",
+      { scale: 1.05, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".service-img",
+          start: "top 85%",
+        },
+      }
+    );
+  }, []);
+
+  const ctaRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      ctaRef.current.children,
+      { opacity: 0, y: 40 , scale: 0.95},
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power2.out",
+        stagger: 0.4,
+        scrollTrigger: {
+          trigger: ctaRef.current,
+          start: "top 85%",
+        },
+      }
+    );
+  }, []);
 
   return (
     <Layout>
       {/* ⭐ HEADER SECTION */}
-      <section className="h-100 pt-20 mt-0 px-4 bg-white">
+      <section ref={headerRef} className="h-100 lg:pt-16 md:pt-8 mt-0 px-4 bg-white">
         <div className="container py-16 mx-auto text-center max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#060C0C] mb-6">
             Our Services & Solutions
@@ -64,21 +152,21 @@ const Services = () => {
             {servicesData.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 flex flex-col"
+                className="service-card group bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 flex flex-col"
               >
                 {/* Card Image */}
                 <div className="w-full h-64 overflow-hidden rounded-xl mb-6">
                   <img
                     src={service.img}
                     alt={service.title}
-                    className="w-full h-full object-cover"
+                    className="service-img w-full h-full object-cover"
                   />
                 </div>
 
                 {/* ⭐ Title Row with Circular Icon Background */}
                 <div className="flex items-center gap-4 mb-4">
                   <div
-                    className="flex-shrink-0 bg-[#EAFFF7] p-3 rounded-full flex items-center justify-center group-hover:bg-[#2C5948] transition-colors duration-300"
+                    className="shrink-0 bg-[#EAFFF7] p-3 rounded-full flex items-center justify-center group-hover:bg-[#2C5948] transition-colors duration-300"
                   >
                     <img
                       src={service.icon}
@@ -107,7 +195,7 @@ const Services = () => {
       </section>
 
       {/* ⭐ CTA SECTION (UNCHANGED) */}
-      <section className="bg-[#EAFFF7] py-20 px-4 mb-0">
+      <section ref={ctaRef} className="bg-[#EAFFF7] py-20 px-4 mb-0">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-[#060C0C] mb-4">
             Let’s Connect!
