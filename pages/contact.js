@@ -1,5 +1,12 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Layout from "../components/Layout";
 import Link from "next/link";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   // Contact details as per the design
@@ -18,12 +25,88 @@ const Contact = () => {
       multiline: true,
     },
   ];
+const headerRef = useRef(null);
+const contentRef = useRef(null);
+const formRef = useRef(null);
+
+useEffect(() => {
+  const ctx = gsap.context(() => {
+
+    // 🔹 Header animation
+    gsap.fromTo(
+      headerRef.current.children,
+      { opacity: 0, y: -40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.2,
+      }
+    );
+
+    // 🔹 Left info
+    gsap.fromTo(
+      ".contact-info",
+      { opacity: 0, x: -60 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: "top 75%",
+          once: true,
+        },
+      }
+    );
+
+    // 🔹 Right form
+    gsap.fromTo(
+      ".contact-form",
+      { opacity: 0, x: 60 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: "top 75%",
+          once: true,
+        },
+      }
+    );
+
+    // 🔹 Form fields stagger
+    gsap.fromTo(
+      formRef.current.querySelectorAll("div"),
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 85%",
+          once: true,
+        },
+      }
+    );
+
+  });
+
+  return () => ctx.revert();
+}, []);
 
   return (
     <Layout>
       {/* ⭐ Top Header Section: Let's Talk */}
       <section className="bg-white pt-20 pb-12 px-4 flex flex-col justify-center items-center">
-        <div className="container mx-auto text-center max-w-4xl pt-16 pb-12">
+        <div ref={headerRef} className="container mx-auto text-center max-w-4xl pt-16 pb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#060C0C] mb-4">
             Let's Talk
           </h1>
@@ -38,8 +121,8 @@ const Contact = () => {
       <section className="py-20 px-4 bg-[#EAFFF7]">
         <div className="container mx-auto">
           <div className="bg-[#EAFFF7] p-0 rounded-2xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              <div className="flex flex-col justify-start pt-8">
+            <div ref={contentRef} className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+              <div className="contact-info flex flex-col justify-start pt-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-[#060C0C] mb-6">
                   Contact Us
                 </h2>
@@ -71,8 +154,8 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="bg-[#EAFFF7] p-0 rounded-xl">
-                <form className="space-y-6">
+              <div className="contact-form bg-[#EAFFF7] p-0 rounded-xl">
+                <form ref={formRef} className="space-y-6">
                   {/* Name */}
                   <div>
                     <label
@@ -143,7 +226,7 @@ const Contact = () => {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full bg-[#2C5948] text-white px-10 py-3 rounded-4xl font-semibold text-lg hover:bg-[#1f4234] transition-colors shadow-lg"
+                    className="w-full bg-[#2C5948] text-white px-10 py-3 rounded-4xl font-semibold text-lg hover:bg-[#1f4234] hover:-translate-y-px transition-all duration-200 shadow-lg"
                   >
                     Contact Us
                   </button>

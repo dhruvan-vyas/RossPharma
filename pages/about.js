@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+"use client";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+import React, { useEffect, useRef, useState } from "react";
 import Layout from '../components/Layout';
-import Navbar from '../components/Navbar';
 
 // Accordion Item Component for Guiding Principles
 const AccordionItem = ({ title, content, isOpen, onClick }) => {
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      gsap.fromTo(
+        contentRef.current,
+        { height: 0, opacity: 0 },
+        { height: "auto", opacity: 1, duration: 0.4, ease: "power1.out" }
+      );
+    }
+  }, [isOpen]);
+
   return (
     <div className="border-b border-gray-200">
       <button
@@ -14,7 +31,7 @@ const AccordionItem = ({ title, content, isOpen, onClick }) => {
         <span className="text-xl font-light">{isOpen ? "—" : "+"}</span>
       </button>
       {isOpen && (
-        <div className="pb-4 text-gray-600">
+        <div ref={contentRef} className="pb-4 text-gray-600">
           <p>{content}</p>
         </div>
       )}
@@ -30,7 +47,6 @@ const About = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  // 📝 ENGLISH DATA
   const guidingPrinciples = [
     {
       title: "Collaboration",
@@ -74,16 +90,134 @@ const About = () => {
     "Company Name",
     "Company Name",
   ];
+
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const playVideo = () => {
+      video.muted = true;
+      video.play().catch(() => { });
+    };
+
+    video.addEventListener("loadeddata", playVideo);
+    return () => video.removeEventListener("loadeddata", playVideo);
+  }, []);
+
+
+  // GSAP Animations
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      headerRef.current.children,
+      { opacity: 0, y: -40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.1,
+        ease: "power2.out",
+        stagger: 0.3
+      }
+    );
+  }, []);
+
+  const storyRef = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: storyRef.current,
+        start: "top 75%",
+      },
+    });
+
+    tl.from(".story-video", {
+      x: -60,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+    }).from(
+      ".story-text",
+      {
+        x: 60,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+      },
+      "-=0.6"
+    );
+  }, []);
+
+  const teamRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      teamRef.current.children,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: "power2.out",
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: teamRef.current,
+          start: "top 75%",
+        },
+      }
+    );
+  }, []);
+
+
+  const principlesRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      principlesRef.current,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: principlesRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+  }, []);
+
+  const partnersRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      partnersRef.current.children,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.6,
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: partnersRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+  }, []);
   return (
     <Layout title="About Us | RossPharma.org">
-      
+
       {/* <Navbar/> */}
       {/* 🧬 About Header Section */}
-      <div className="pb-12 mt-0 h-100 pt-40 bg-white text-center border-b border-gray-100">
+      <div ref={headerRef} className="pb-8 sm:pb-10 md:pb-12 lg:pb-16 mt-0 h-100 pt-28 sm:pt-32 md:pt-36 lg:pt-40 bg-white text-center">
         {/* <h1 className="text-4xl font-extrabold text-[#060C0C] mb-2"> */}
-          {/* About RossPharma */}
+        {/* About RossPharma */}
         {/* </h1> */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#060C0C] mb-2 break-words leading-tight">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#060C0C] mb-2 wrap-break-word leading-tight">
           About RossPharma
         </h1>
 
@@ -96,23 +230,33 @@ const About = () => {
       {/* 🔬 Story & Mission Section */}
       <div className="py-16 min-h-[40vh] md:min-h-[60vh] mx-auto px-4 flex items-center">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col-reverse lg:flex-row items-center gap-12">
+          <div ref={storyRef} className="flex flex-col-reverse lg:flex-row items-center gap-12">
 
             {/* VIDEO LEFT */}
-            <div className="w-full lg:w-[60%]">
+            <div className="story-video w-full lg:w-[60%]">
               <div className="rounded-lg overflow-hidden shadow-xl aspect-video">
                 <video
-                  src="./videos/sample.mp4"
+                  ref={(el) => {
+                    if (el) {
+                      el.muted = true;
+                      el.play().catch(() => { });
+                    }
+                  }}
+                  src="/videos/sample.mp4"
                   autoPlay
                   loop
                   muted
+                  playsInline
+                  preload="auto"
+                  poster="/images/video-poster.jpg"
                   className="w-full h-full object-cover"
-                ></video>
+                />
+
               </div>
             </div>
 
             {/* TEXT RIGHT */}
-            <div className="w-full lg:w-[60%]">
+            <div className="story-text w-full lg:w-[60%]">
               <h2 className="text-4xl md:text-5xl font-bold text-[#060C0C] mb-6">
                 Our Story & Mission
               </h2>
@@ -152,7 +296,7 @@ const About = () => {
             Meet the dedicated and professional people guiding our future.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div ref={teamRef} className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
               <div key={index} className="flex flex-col items-center">
                 <div className="w-full h-auto max-w-xs rounded-lg overflow-hidden shadow-lg mb-4 transform hover:scale-[1.02] transition duration-300">
@@ -185,7 +329,7 @@ const About = () => {
           style={{ backgroundImage: 'url("/path/to/left-swoosh-graphic.svg")' }}
         ></div>
 
-        <div className="max-w-3xl mx-auto text-center relative z-10">
+        <div ref={principlesRef} className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="text-3xl font-bold text-[#060C0C] mb-12">
             Our Guiding Principles
           </h2>
@@ -215,7 +359,7 @@ const About = () => {
             companies in the industry.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-x-12 gap-y-8">
+          <div ref={partnersRef} className="flex flex-wrap justify-center gap-x-12 gap-y-8">
             {partners.map((name, index) => (
               <div
                 key={index}

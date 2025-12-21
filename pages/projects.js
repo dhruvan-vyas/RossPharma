@@ -1,5 +1,10 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -49,7 +54,7 @@ const projects = [
     description:
       "Identified compliance gaps for international submissions and provided corrective action plans.",
     link: "#",
-    },
+  },
   {
     title: "Health Canada Submission Support",
     description:
@@ -60,20 +65,77 @@ const projects = [
 
 
 const Projects = () => {
+
+
+useEffect(() => {
+  const cards = gsap.utils.toArray(".project-card");
+
+  cards.forEach((card, index) => {
+    let fromVars = { opacity: 0 };
+
+    if (window.innerWidth >= 1024) {
+      // lg:grid-cols-4 → ALL from bottom
+      fromVars.y = 60;
+    } else {
+      // md:grid-cols-2 + mobile
+      fromVars.x = index % 2 === 0 ? -80 : 80;
+    }
+
+    gsap.fromTo(
+      card,
+      fromVars,
+      {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration: 0.9,
+        delay: index * 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          toggleActions: "play none none none",
+          once: true,
+        },
+      }
+    );
+  });
+}, []);
+
+
   return (
     <Layout title="Projects | RossPharma.org">
       {/* ⭐ HEADER SECTION */}
-      <section className="bg-[#EAFFF7] mt-0 h-100 pt-40 py-20 px-4 relative overflow-hidden">
-       
+      <section className="bg-[#EAFFF7] mt-4 py-16 md:py-24 lg:py-32 px-4 relative overflow-hidden">
         <div className="container mx-auto text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-[#060C0C] mb-6">
+
+          <h1 className="
+      text-3xl 
+      sm:text-4xl 
+      md:text-5xl 
+      lg:text-6xl 
+      font-extrabold 
+      text-[#060C0C] 
+      mb-4 md:mb-6
+    ">
             Our Projects & Case Studies
           </h1>
-          <p className="text-lg md:text-xl font-light text-gray-700 max-w-3xl mx-auto">
+
+          <p className="
+      text-base
+      sm:text-lg
+      md:text-xl
+      lg:text-2xl
+      font-light 
+      text-gray-700 
+      max-w-3xl 
+      mx-auto
+    ">
             We proudly partner with leading biotech and pharmaceutical
             organizations to solve complex challenges with compliant and
             innovative solutions.
           </p>
+
         </div>
       </section>
 
@@ -84,10 +146,10 @@ const Projects = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="group bg-white p-8 rounded-2xl shadow-md hover:shadow-xl border border-gray-200 transition-all duration-300 hover:-translate-y-2"
+                className="project-card group opacity-0 bg-white p-8 rounded-2xl shadow-md hover:shadow-xl border border-gray-200"
               >
                 {/* Icon */}
-                <div className="w-12 h-12 bg-[#EAFFF7] rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:bg-[#2C5948] transition-all">
+                <div className="w-12 h-12 bg-[#EAFFF7] rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:bg-[#2C5948] ">
                   <img
                     src="./icons/bulb.svg"
                     className="w-6 h-6 group-hover:invert transition-all"

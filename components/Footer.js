@@ -1,17 +1,89 @@
-import Link from 'next/link';
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePathname } from "next/navigation";
+import Link from 'next/link';
+gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
     const pathname = usePathname();
+    const footerRef = useRef(null);
+    const ctaRef = useRef(null);
+    const contentRef = useRef(null);
+    const copyrightRef = useRef(null);
+
+    useEffect(() => {
+  const ctx = gsap.context(() => {
+
+    // 🔥 CTA animation
+    if (ctaRef.current) {
+      gsap.fromTo(
+        ctaRef.current.children,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: ctaRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    }
+
+    // 🔥 Footer main content
+    gsap.fromTo(
+      contentRef.current.children,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: "top 85%",
+          once: true,
+        },
+      }
+    );
+
+    // 🔥 Copyright
+    gsap.fromTo(
+      copyrightRef.current,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.6,
+        scrollTrigger: {
+          trigger: copyrightRef.current,
+          start: "top 95%",
+          once: true,
+        },
+      }
+    );
+
+  }, footerRef);
+
+  return () => ctx.revert();
+}, []);
+
     return (
-        <footer>
+        <footer ref={footerRef}>
             <div className="bg-[#1A2E2C] px-6 md:px-18 py-10 text-[#EAFFF7] mt-16 mx-auto">
 
                 {/* TOP SECTION */}
                 {pathname !== "/services" && pathname !== "/contact" && (
-                    <div className="flex justify-center items-center text-center mb-12">
+                    <div ref={ctaRef} className="flex justify-center items-center text-center mb-12">
                         <div className="max-w-[80%] mx-auto">
-                            <h2 className="text-3xl md:text-5xl font-semibold leading-tight mx-auto">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mx-auto">
                                 Knowledgeable of International Regulations and Standards
                             </h2>
 
@@ -26,11 +98,11 @@ const Footer = () => {
                 )}
 
                 {/* BOTTOM SECTION */}
-                <div className="flex flex-col md:flex-row w-full gap-10 my-4 md:gap-0">
+                <div ref={contentRef} className="flex flex-col md:flex-row w-full gap-10 my-4 md:gap-0">
 
                     {/* LEFT SECTION */}
                     <div className="w-full md:w-1/3 flex flex-col gap-1">
-                        <h3 className="text-xl font-semibold">Rosspharma</h3>
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">Rosspharma</h3>
                         <p className="text-sm">HEALING THE FUTURE</p>
                     </div>
 
@@ -39,7 +111,7 @@ const Footer = () => {
 
                         {/* QUICK LINKS */}
                         <div className="flex flex-col gap-1">
-                            <h4 className="text-xl font-semibold">Quick Links</h4>
+                            <h4 className="text-lg sm:text-xl md:text-2xl font-semibold">Quick Links</h4>
 
                             <Link href="/">Home</Link>
                             <Link href="/about">About Us</Link>
@@ -50,16 +122,16 @@ const Footer = () => {
 
                         {/* LEGAL PAGES */}
                         <div className="flex flex-col gap-1">
-                            <h4 className="text-xl font-semibold">Legal Pages</h4>
+                            <h4 className="text-lg sm:text-xl md:text-2xl font-semibold">Legal Pages</h4>
                             <Link href="/terms-of-service">Terms of Service</Link>
                             <Link href="/privacy-policy">Privacy Policy</Link>
                         </div>
 
                         {/* SOCIAL */}
                         <div className="flex flex-col gap-1">
-                            <h4 className="text-xl font-semibold">Follow Us</h4>
+                            <h4 className="text-lg sm:text-xl md:text-2xl font-semibold">Follow Us</h4>
                             <Link href='#'>
-                                <span className="flex items-center gap-2 cursor-pointer text-[#EAFFF7]">
+                                <span className="flex items-center gap-2 cursor-pointer text-[#EAFFF7] hover:scale-105 transition-transform duration-200">
 
                                     <svg
                                         height="18px"
@@ -89,8 +161,10 @@ const Footer = () => {
                 </div>
 
                 {/* COPYRIGHT */}
-                <div className="border-t-2 border-[#EAFFF7] text-center py-5">
-                    <p>© 2025 Rosspharma. All Rights Reserved.</p>
+                <div ref={copyrightRef} className="border-t-2 border-[#EAFFF7] text-center py-5">
+                    <p className="text-xs sm:text-sm md:text-base">
+                        © 2025 Rosspharma. All Rights Reserved.
+                    </p>
                 </div>
 
             </div>
